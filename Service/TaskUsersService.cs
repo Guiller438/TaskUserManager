@@ -71,5 +71,10 @@ namespace TaskUserManager.Service
             return await _repository.GetLastCategoryAsync();
         }
 
+        public async Task AprobacionAsync(int userId, int userTaskId)
+        {
+            await _repository.AprobacionAsync(userId, userTaskId);
+        }
+
     }
 }

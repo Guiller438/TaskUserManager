@@ -13,5 +13,8 @@ namespace TaskUserManager.Service
         Task<IEnumerable<int>> GetUserIdsByCategoryIdAsync(int categoryId);
 
         Task<TfaCategory?> GetLastCategoryAsync();
+
+        Task AprobacionAsync(int userId, int userTaskId);
+
     }
 }

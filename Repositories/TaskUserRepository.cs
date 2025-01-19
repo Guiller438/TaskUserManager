@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskUserManager.Data;
+using TaskUserManager.DTOs;
 using TaskUserManager.Models;
 
 namespace TaskUserManager.Repositories
@@ -67,5 +68,26 @@ namespace TaskUserManager.Repositories
             _context.TfaUsersTasks.AddRange(entities); // _context es tu DbContext
             await _context.SaveChangesAsync(); // Guarda los cambios en la base de datos
         }
+
+        public async Task AprobacionAsync(int userId, int userTaskId)
+        {
+            // Busca la entidad existente en la base de datos
+            var existingTask = await _context.TfaUsersTasks
+                .FirstOrDefaultAsync(t => t.UserId == userId && t.UserTaskId == userTaskId);
+
+            // Si no se encuentra, lanza una excepción o maneja el error
+            if (existingTask == null)
+            {
+                throw new KeyNotFoundException($"No se encontró una tarea para el usuario con ID {userId}.");
+            }
+
+            // Actualiza los campos necesarios
+            existingTask.StatusTask = true;
+
+            // Marca la entidad como modificada y guarda los cambios
+            _context.TfaUsersTasks.Update(existingTask);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

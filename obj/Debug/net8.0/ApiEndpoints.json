@@ -17,6 +17,27 @@
   },
   {
     "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "UpdateTask",
+    "RelativePath": "api/TaskUsers/Aprobaciones",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "userTaskId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
     "Method": "GetTasksByUserId",
     "RelativePath": "api/TaskUsers/tasks/{userId}",
     "HttpMethod": "GET",

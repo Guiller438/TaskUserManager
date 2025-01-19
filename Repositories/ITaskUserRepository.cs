@@ -1,4 +1,5 @@
-﻿using TaskUserManager.Models;
+﻿using TaskUserManager.DTOs;
+using TaskUserManager.Models;
 
 namespace TaskUserManager.Repositories
 {
@@ -16,6 +17,7 @@ namespace TaskUserManager.Repositories
 
         Task AddRangeAsync(IEnumerable<TfaUsersTask> entities);
 
+        Task AprobacionAsync(int userId, int userTaskId);
 
 
     }
