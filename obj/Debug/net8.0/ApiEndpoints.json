@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "AddTaskUser",
+    "RelativePath": "api/TaskUsers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskUser",
+        "Type": "TaskUserManager.DTOs.TaskUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "GetTasksByUserId",
+    "RelativePath": "api/TaskUsers/tasks/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
