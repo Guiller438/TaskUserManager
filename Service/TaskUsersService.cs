@@ -76,5 +76,9 @@ namespace TaskUserManager.Service
             await _repository.AprobacionAsync(userId, userTaskId);
         }
 
+        public async Task SubirImagenTarea(UpdateEvidence updateEvidence)
+        {
+             await _repository.SubirImagenTarea(updateEvidence);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using TaskUserManager.Data;
 using TaskUserManager.DTOs;
 using TaskUserManager.Models;
+using TaskUserManager.Service;
 
 namespace TaskUserManager.Repositories
 {
@@ -9,9 +10,12 @@ namespace TaskUserManager.Repositories
     {
         private readonly DbAb0bdeTalentseedsContext _context;
 
-        public TaskUserRepository(DbAb0bdeTalentseedsContext context)
+        private readonly IFileUploadService _fileUploadService;
+
+        public TaskUserRepository(DbAb0bdeTalentseedsContext context, IFileUploadService fileUploadService)
         {
             _context = context;
+            _fileUploadService = fileUploadService;
         }
 
         public async Task<IEnumerable<TfaUsersTask>> GetTasksByUserIdAsync(int userId)
@@ -83,6 +87,37 @@ namespace TaskUserManager.Repositories
 
             // Actualiza los campos necesarios
             existingTask.StatusTask = true;
+
+            // Marca la entidad como modificada y guarda los cambios
+            _context.TfaUsersTasks.Update(existingTask);
+            await _context.SaveChangesAsync();
+        }
+
+
+        public async Task SubirImagenTarea(UpdateEvidence updateEvidence)
+        {
+            // Validar que el archivo no sea nulo
+            if (updateEvidence.vlf_image == null)
+            {
+                throw new ArgumentException("El archivo no puede ser nulo.");
+            }
+
+            // Buscar la tarea en la base de datos usando los IDs proporcionados
+            var existingTask = await _context.TfaUsersTasks
+                .FirstOrDefaultAsync(t => t.UserId == updateEvidence.UserId && t.UserTaskId == updateEvidence.UserTaskId);
+
+            // Si no se encuentra, lanza una excepción para notificar al controlador
+            if (existingTask == null)
+            {
+                throw new KeyNotFoundException($"No se encontró una tarea para el usuario con ID {updateEvidence.UserId} y tarea con ID {updateEvidence.UserTaskId}.");
+            }
+
+            // Subir la imagen usando el servicio de subida de archivos
+            var filePath = await _fileUploadService.UploadUserImageAsync(updateEvidence.vlf_image);
+
+            // Actualizar la ruta de la evidencia y la fecha de subida
+            existingTask.EvidencePath = filePath;
+            existingTask.EvidenceUploadDate = updateEvidence.EvidenceUploadDate ?? DateTime.Now;
 
             // Marca la entidad como modificada y guarda los cambios
             _context.TfaUsersTasks.Update(existingTask);

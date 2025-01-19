@@ -178,3 +178,4 @@ C:\Users\MEGABLODFIX\source\repos\FISAmicroservicios\TaskUserManager\bin\Debug\n
 C:\Users\MEGABLODFIX\source\repos\FISAmicroservicios\TaskUserManager\bin\Debug\net8.0\System.Web.WebPages.dll
 C:\Users\MEGABLODFIX\source\repos\FISAmicroservicios\TaskUserManager\bin\Debug\net8.0\Microsoft.Web.Infrastructure.dll
 C:\Users\MEGABLODFIX\source\repos\FISAmicroservicios\TaskUserManager\obj\Debug\net8.0\TaskUserManager.sourcelink.json
+C:\Users\MEGABLODFIX\source\repos\FISAmicroservicios\TaskUserManager\bin\Debug\net8.0\Newtonsoft.Json.dll

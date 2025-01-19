@@ -16,5 +16,9 @@ namespace TaskUserManager.Service
 
         Task AprobacionAsync(int userId, int userTaskId);
 
+        Task SubirImagenTarea(UpdateEvidence updateEvidence);
+
+
+
     }
 }

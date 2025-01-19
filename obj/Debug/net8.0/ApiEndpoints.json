@@ -17,7 +17,7 @@
   },
   {
     "ContainingType": "TaskUserManager.Controllers.TaskUsers",
-    "Method": "UpdateTask",
+    "Method": "AprobarTarea",
     "RelativePath": "api/TaskUsers/Aprobaciones",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -31,6 +31,37 @@
       {
         "Name": "userTaskId",
         "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "SubirImagen",
+    "RelativePath": "api/TaskUsers/SubirImagen",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserTaskId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "vlf_image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "EvidenceUploadDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
     ],

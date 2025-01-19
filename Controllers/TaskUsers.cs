@@ -10,9 +10,12 @@ namespace TaskUserManager.Controllers
     public class TaskUsers : ControllerBase
     {
         private readonly ITaskUserService _service;
-        public TaskUsers(ITaskUserService service)
+
+        private readonly IFileUploadService _fileUploadService;
+        public TaskUsers(ITaskUserService service, IFileUploadService fileUploadService)
         {
             _service = service;
+            _fileUploadService = fileUploadService;
         }
 
         [HttpGet("tasks/{userId}")]
@@ -44,7 +47,7 @@ namespace TaskUserManager.Controllers
         }
 
         [HttpPut("Aprobaciones")]
-        public async Task<IActionResult> UpdateTask(int userId, int userTaskId)
+        public async Task<IActionResult> AprobarTarea(int userId, int userTaskId)
         {
 
             try
@@ -61,6 +64,32 @@ namespace TaskUserManager.Controllers
                 return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
+
+        [HttpPut("SubirImagen")]
+
+        public async Task<IActionResult> SubirImagen(UpdateEvidence updateEvidenceDto)
+        {
+            if (updateEvidenceDto.vlf_image == null)
+            {
+                return BadRequest("El archivo no puede ser nulo.");
+            }
+            try
+            {
+                var filePath = await _fileUploadService.UploadUserImageAsync(updateEvidenceDto.vlf_image);
+                await _service.SubirImagenTarea(updateEvidenceDto);
+                return Ok("La imagen se subió correctamente.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
+
 
     }
 }
