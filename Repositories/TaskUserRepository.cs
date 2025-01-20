@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using TaskUserManager.Data;
 using TaskUserManager.DTOs;
 using TaskUserManager.Models;
@@ -27,8 +28,8 @@ namespace TaskUserManager.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<int>> GetUserIdsByCategoryIdAsync(int categoryId)
-        {
+        public async Task<IEnumerable<int>?> GetUserIdsByCategoryIdAsync(int categoryId)
+        { 
 
             var teamIds = await _context.TfaTeamsCategories
                 .Where(ctc => ctc.CategoriesId == categoryId) // Filtra por categoría
@@ -121,6 +122,39 @@ namespace TaskUserManager.Repositories
 
             // Marca la entidad como modificada y guarda los cambios
             _context.TfaUsersTasks.Update(existingTask);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<TfaTask> GetTaskAsync(int id)
+        {
+            var taskEntity = await _context.TfaTasks.FindAsync(id);
+
+            if (taskEntity == null)
+            {
+                throw new KeyNotFoundException($"No se encontró la tarea con el ID {id}.");
+            }
+
+            return taskEntity;
+        }
+
+
+        public async Task DeleteTaskAsync(int id)
+        {
+            // Buscar todos los registros que coincidan con el TaskId
+            var taskUserEntities = await _context.TfaUsersTasks
+                                             .Where(t => t.UserTaskId == id)
+                                             .ToListAsync();
+
+
+            if (taskUserEntities == null || !taskUserEntities.Any() )
+            {
+                throw new KeyNotFoundException($"No se encontraron tareas con el ID {id}.");
+            }
+
+            // Eliminar los registros encontrados
+            _context.TfaUsersTasks.RemoveRange(taskUserEntities);
+
+            // Guardar los cambios en la base de datos
             await _context.SaveChangesAsync();
         }
 

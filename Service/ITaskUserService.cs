@@ -8,15 +8,19 @@ namespace TaskUserManager.Service
         Task<IEnumerable<TfaUsersTask>> GetTasksByUserIdAsync(int userId);
         Task<IEnumerable<TfaTask>> GetTasksByCategoryIdAsync(int categoryId);
 
-        Task AddAsync(TaskUserDto entity);
+        Task AddAsync(int TaskId);
 
-        Task<IEnumerable<int>> GetUserIdsByCategoryIdAsync(int categoryId);
+        Task<IEnumerable<int>?> GetUserIdsByCategoryIdAsync(int categoryId);
 
         Task<TfaCategory?> GetLastCategoryAsync();
 
         Task AprobacionAsync(int userId, int userTaskId);
 
         Task SubirImagenTarea(UpdateEvidence updateEvidence);
+
+        Task DeleteTaskAsync(int taskId);
+
+        //Task<TfaTask> GetTaskAsync(int id);
 
 
 

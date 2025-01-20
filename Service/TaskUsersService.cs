@@ -23,22 +23,26 @@ namespace TaskUserManager.Service
             return await _repository.GetTasksByUserIdAsync(userId);
         }
 
-        public async Task AddAsync(TaskUserDto entity)
+        public async Task AddAsync(int TaskId)
         {
-            // Obtener la última categoría
-            var lastCategory = await _repository.GetLastCategoryAsync();
+            var AssignToTask = await _repository.GetTaskAsync(TaskId);
 
             // Verificar si existe una categoría
-            if (lastCategory == null)
+            if (AssignToTask == null)
             {
                 throw new InvalidOperationException("No se encontró ninguna categoría.");
             }
 
             // Obtener el ID de la categoría
-            var categoryId = lastCategory.CategoryId;
+            var categoryId = AssignToTask.CategoryId;
+
+            if (categoryId == null)
+            {
+                return; // O maneja el caso según la lógica de negocio
+            }
 
             // Obtener los colaboradores asociados a la categoría
-            var collaboratorIds = await _repository.GetUserIdsByCategoryIdAsync(categoryId);
+            var collaboratorIds = await _repository.GetUserIdsByCategoryIdAsync(categoryId.Value);
 
             // Si no hay colaboradores asociados, simplemente retorna
             if (!collaboratorIds.Any())
@@ -49,7 +53,7 @@ namespace TaskUserManager.Service
             // Crea registros en TfaUsersTask para cada colaborador
             var taskUsers = collaboratorIds.Select(userId => new TfaUsersTask
             {
-                UserTaskId = entity.UserTaskId, // ID de la tarea recién creada
+                UserTaskId = AssignToTask.TaskId, // ID de la tarea recién creada
                 UserId = userId,
                 StatusTask = false, // Estado pendiente
                 EvidencePath = null,
@@ -61,7 +65,7 @@ namespace TaskUserManager.Service
         }
 
 
-        public async Task<IEnumerable<int>> GetUserIdsByCategoryIdAsync(int categoryId)
+        public async Task<IEnumerable<int>?> GetUserIdsByCategoryIdAsync(int categoryId)
         {
             return await _repository.GetUserIdsByCategoryIdAsync(categoryId);
         }
@@ -79,6 +83,11 @@ namespace TaskUserManager.Service
         public async Task SubirImagenTarea(UpdateEvidence updateEvidence)
         {
              await _repository.SubirImagenTarea(updateEvidence);
+        }
+
+        public async Task DeleteTaskAsync(int taskId)
+        {
+            await _repository.DeleteTaskAsync(taskId);
         }
     }
 }

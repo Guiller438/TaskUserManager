@@ -11,7 +11,7 @@ namespace TaskUserManager.Repositories
 
         Task AddAsync(TfaUsersTask entity);
 
-        Task<IEnumerable<int>> GetUserIdsByCategoryIdAsync(int categoryId);
+        Task<IEnumerable<int>?> GetUserIdsByCategoryIdAsync(int categoryId);
 
         Task<TfaCategory?> GetLastCategoryAsync();
 
@@ -20,6 +20,9 @@ namespace TaskUserManager.Repositories
         Task AprobacionAsync(int userId, int userTaskId);
 
         Task SubirImagenTarea(UpdateEvidence updateEvidence);
+
+        Task<TfaTask> GetTaskAsync(int id);
+        Task DeleteTaskAsync(int taskId);
 
 
     }

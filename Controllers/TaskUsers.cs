@@ -34,16 +34,11 @@ namespace TaskUserManager.Controllers
             return Ok(taskDtos);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddTaskUser([FromBody] TaskUserDto taskUser)
+        [HttpPost("AsignarTareas")]
+        public async Task<IActionResult> AddTaskUser(int TaskId)
         {
-            if (taskUser == null)
-            {
-                return BadRequest("La tarea del usuario no puede ser nula.");
-            }
-
-            await _service.AddAsync(taskUser);
-            return Ok(taskUser);
+            await _service.AddAsync(TaskId);
+            return Ok();
         }
 
         [HttpPut("Aprobaciones")]
@@ -78,6 +73,24 @@ namespace TaskUserManager.Controllers
                 var filePath = await _fileUploadService.UploadUserImageAsync(updateEvidenceDto.vlf_image);
                 await _service.SubirImagenTarea(updateEvidenceDto);
                 return Ok("La imagen se subió correctamente.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
+        [HttpDelete("DeleteTask")]
+        public async Task<IActionResult> DeleteTask(int taskId)
+        {
+            try
+            {
+                await _service.DeleteTaskAsync(taskId);
+                return Ok("La tarea se eliminó correctamente.");
             }
             catch (KeyNotFoundException ex)
             {

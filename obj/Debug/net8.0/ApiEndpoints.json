@@ -1,22 +1,6 @@
 [
   {
     "ContainingType": "TaskUserManager.Controllers.TaskUsers",
-    "Method": "AddTaskUser",
-    "RelativePath": "api/TaskUsers",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "taskUser",
-        "Type": "TaskUserManager.DTOs.TaskUserDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
     "Method": "AprobarTarea",
     "RelativePath": "api/TaskUsers/Aprobaciones",
     "HttpMethod": "PUT",
@@ -30,6 +14,38 @@
       },
       {
         "Name": "userTaskId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "AddTaskUser",
+    "RelativePath": "api/TaskUsers/AsignarTareas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TaskId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "DeleteTask",
+    "RelativePath": "api/TaskUsers/DeleteTask",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskId",
         "Type": "System.Int32",
         "IsRequired": false
       }
