@@ -159,6 +159,50 @@
           }
         }
       }
+    },
+    "/api/TaskUsers/GetUsersByTaskCategory": {
+      "get": {
+        "tags": [
+          "TaskUsers"
+        ],
+        "parameters": [
+          {
+            "name": "idCategory",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TaskUsers/GetUserByCategories": {
+      "get": {
+        "tags": [
+          "TaskUsers"
+        ],
+        "parameters": [
+          {
+            "name": "idCategory",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": { }

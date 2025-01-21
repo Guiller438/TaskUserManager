@@ -89,5 +89,26 @@ namespace TaskUserManager.Service
         {
             await _repository.DeleteTaskAsync(taskId);
         }
+
+        public async Task<List<TfaUser>> GetUserByCategories(int categoryId)
+        {
+            try
+            {
+
+                // Llamada al repositorio para obtener los usuarios
+                var users = await _repository.GetUserByCategories(categoryId);
+
+                if (users == null || !users.Any())
+                {
+                    return new List<TfaUser>();
+                }
+
+                return users;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en el servicio de usuarios", ex);
+            }
+        }
     }
 }

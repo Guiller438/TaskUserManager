@@ -22,6 +22,7 @@ namespace TaskUserManager.Service
 
         //Task<TfaTask> GetTaskAsync(int id);
 
+        Task<List<TfaUser>> GetUserByCategories(int id);
 
 
     }

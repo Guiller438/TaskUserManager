@@ -54,6 +54,38 @@
   },
   {
     "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "GetUserByCategories",
+    "RelativePath": "api/TaskUsers/GetUserByCategories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCategory",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "GetUsersByTaskCategory",
+    "RelativePath": "api/TaskUsers/GetUsersByTaskCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCategory",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
     "Method": "SubirImagen",
     "RelativePath": "api/TaskUsers/SubirImagen",
     "HttpMethod": "PUT",

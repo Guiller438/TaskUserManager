@@ -29,7 +29,7 @@ namespace TaskUserManager.Repositories
         }
 
         public async Task<IEnumerable<int>?> GetUserIdsByCategoryIdAsync(int categoryId)
-        { 
+        {
 
             var teamIds = await _context.TfaTeamsCategories
                 .Where(ctc => ctc.CategoriesId == categoryId) // Filtra por categoría
@@ -146,7 +146,7 @@ namespace TaskUserManager.Repositories
                                              .ToListAsync();
 
 
-            if (taskUserEntities == null || !taskUserEntities.Any() )
+            if (taskUserEntities == null || !taskUserEntities.Any())
             {
                 throw new KeyNotFoundException($"No se encontraron tareas con el ID {id}.");
             }
@@ -156,6 +156,46 @@ namespace TaskUserManager.Repositories
 
             // Guardar los cambios en la base de datos
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<TfaUser>> GetUserByCategories(int id)
+        {
+            try
+            {
+                // Verificar si existen equipos para la categoría antes de obtener los IDs
+                var teamIds = await _context.TfaTeamsCategories
+                    .Where(ctc => ctc.CategoriesId == id)
+                    .Select(ctc => ctc.TeamId)
+                    .ToListAsync();
+
+                if (!teamIds.Any())
+                {
+                    return new List<TfaUser>();  // Retorna lista vacía si no hay equipos
+                }
+
+                // Obtener IDs de colaboradores asociados a los equipos filtrados
+                var collaboratorIds = await _context.TfaTeamsColaborators
+                    .Where(tc => teamIds.Contains(tc.ColaboratorTeamID))
+                    .Select(tc => tc.ColaboratorUsersID)
+                    .Distinct()
+                    .ToListAsync();
+
+                if (!collaboratorIds.Any())
+                {
+                    return new List<TfaUser>();  // Retorna lista vacía si no hay colaboradores
+                }
+
+                // Obtener lista de usuarios usando los IDs de colaboradores
+                return await _context.TfaUsers
+                    .Where(u => collaboratorIds.Contains(u.UsersId))
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log del error (puedes usar una librería como Serilog o simplemente registrar en consola/log)
+                Console.WriteLine($"Error obteniendo usuarios por categoría: {ex.Message}");
+                throw new ApplicationException("Error al obtener los usuarios por categoría", ex);
+            }
         }
 
     }

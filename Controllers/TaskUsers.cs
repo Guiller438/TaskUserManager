@@ -103,6 +103,33 @@ namespace TaskUserManager.Controllers
         }
 
 
+        [HttpGet("GetUsersByTaskCategory")]
+
+        public async Task<IActionResult> GetUsersByTaskCategory(int idCategory)
+        {
+            var tasks = await _service.GetTasksByCategoryIdAsync(idCategory);
+            
+            return (tasks != null) ? Ok(tasks) : NotFound();
+
+        }
+
+
+
+        [HttpGet("GetUserByCategories")]
+
+        public async Task<IActionResult> GetUserByCategories(int idCategory)
+        {
+            var users = await _service.GetUserByCategories(idCategory);
+
+            if (users == null || users.Count == 0)
+            {
+                return NotFound(new { message = "No se encontraron usuarios para la categoría proporcionada" });
+            }
+
+            return Ok(users);
+
+        }
+
 
     }
 }
