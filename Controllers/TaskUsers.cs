@@ -102,19 +102,6 @@ namespace TaskUserManager.Controllers
             }
         }
 
-
-        [HttpGet("GetUsersByTaskCategory")]
-
-        public async Task<IActionResult> GetUsersByTaskCategory(int idCategory)
-        {
-            var tasks = await _service.GetTasksByCategoryIdAsync(idCategory);
-            
-            return (tasks != null) ? Ok(tasks) : NotFound();
-
-        }
-
-
-
         [HttpGet("GetUserByCategories")]
 
         public async Task<IActionResult> GetUserByCategories(int idCategory)
