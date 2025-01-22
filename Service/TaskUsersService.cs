@@ -110,5 +110,23 @@ namespace TaskUserManager.Service
                 throw new ApplicationException("Error en el servicio de usuarios", ex);
             }
         }
+        public async Task<List<TfaTask>> GetTaskByCategories(int userId)
+        {
+            try
+            {
+                // Llamada al repositorio para obtener las tareas
+                var tasks = await _repository.GetTaskByCategories(userId);
+
+                if (tasks == null || !tasks.Any())
+                {
+                    return new List<TfaTask>();
+                }
+                return tasks;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en el servicio de tareas", ex);
+            }
+        }
     }
 }

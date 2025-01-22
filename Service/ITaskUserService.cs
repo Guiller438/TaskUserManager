@@ -24,6 +24,7 @@ namespace TaskUserManager.Service
 
         Task<List<TfaUser>> GetUserByCategories(int id);
 
+        Task<List<TfaTask>> GetTaskByCategories(int userid);
 
     }
 }

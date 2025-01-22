@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|c:\\users\\megablodfix\\source\\repos\\fisamicroservicios\\taskusermanager\\models\\tfatask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|solutionrelative:models\\tfatask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|c:\\users\\megablodfix\\source\\repos\\fisamicroservicios\\taskusermanager\\controllers\\taskusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|solutionrelative:controllers\\taskusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,8 +19,12 @@
       "RelativeMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|solutionrelative:repositories\\taskuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|c:\\users\\megablodfix\\source\\repos\\fisamicroservicios\\taskusermanager\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|c:\\users\\megablodfix\\source\\repos\\fisamicroservicios\\taskusermanager\\repositories\\itaskuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|solutionrelative:repositories\\itaskuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|c:\\users\\megablodfix\\source\\repos\\fisamicroservicios\\taskusermanager\\service\\itaskuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA09E531-A87F-452F-A942-08AC82B697A8}|TaskUserManager.csproj|solutionrelative:service\\itaskuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,52 +38,78 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-22T15:11:56.124Z",
+              "DocumentIndex": 5,
+              "Title": "ITaskUserService.cs",
+              "DocumentMoniker": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Service\\ITaskUserService.cs",
+              "RelativeDocumentMoniker": "Service\\ITaskUserService.cs",
+              "ToolTip": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Service\\ITaskUserService.cs",
+              "RelativeToolTip": "Service\\ITaskUserService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAkwBoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T16:01:50.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TfaTask.cs",
+              "DocumentMoniker": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Models\\TfaTask.cs",
+              "RelativeDocumentMoniker": "Models\\TfaTask.cs",
+              "ToolTip": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Models\\TfaTask.cs",
+              "RelativeToolTip": "Models\\TfaTask.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T16:00:48.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ITaskUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Repositories\\ITaskUserRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ITaskUserRepository.cs",
+              "ToolTip": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Repositories\\ITaskUserRepository.cs",
+              "RelativeToolTip": "Repositories\\ITaskUserRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAkwBwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T15:36:58.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "TaskUsers.cs",
               "DocumentMoniker": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Controllers\\TaskUsers.cs",
               "RelativeDocumentMoniker": "Controllers\\TaskUsers.cs",
               "ToolTip": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Controllers\\TaskUsers.cs",
               "RelativeToolTip": "Controllers\\TaskUsers.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAADwv2sAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAowIIAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-20T01:52:32.652Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TaskUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Repositories\\TaskUserRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\TaskUserRepository.cs",
               "ToolTip": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Repositories\\TaskUserRepository.cs",
               "RelativeToolTip": "Repositories\\TaskUserRepository.cs",
-              "ViewState": "AgIAALoAAAAAAAAAAAAAAMYAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAAAPcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-20T01:52:31.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "TaskUsersService.cs",
               "DocumentMoniker": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Service\\TaskUsersService.cs",
               "RelativeDocumentMoniker": "Service\\TaskUsersService.cs",
               "ToolTip": "C:\\Users\\MEGABLODFIX\\source\\repos\\FISAmicroservicios\\TaskUserManager\\Service\\TaskUsersService.cs",
               "RelativeToolTip": "Service\\TaskUsersService.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAuwG8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAUwIEAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-20T01:52:28.917Z",
               "EditorCaption": ""

@@ -160,7 +160,7 @@
         }
       }
     },
-    "/api/TaskUsers/GetUsersByTaskCategory": {
+    "/api/TaskUsers/GetUserByCategories": {
       "get": {
         "tags": [
           "TaskUsers"
@@ -182,14 +182,14 @@
         }
       }
     },
-    "/api/TaskUsers/GetUserByCategories": {
+    "/api/TaskUsers/GetTaskByCategories": {
       "get": {
         "tags": [
           "TaskUsers"
         ],
         "parameters": [
           {
-            "name": "idCategory",
+            "name": "userId",
             "in": "query",
             "schema": {
               "type": "integer",

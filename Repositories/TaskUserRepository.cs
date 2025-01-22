@@ -198,5 +198,55 @@ namespace TaskUserManager.Repositories
             }
         }
 
+
+        public async Task<List<TfaTask>> GetTaskByCategories(int userid)
+        {
+            try
+            {
+                // Verificar si existen equipos para la categoría antes de obtener los IDs
+                var teamIds = await _context.TfaTeamsColaborators
+                    .Where(ctc => ctc.ColaboratorUsersID == userid)
+                    .Select(ctc => ctc.ColaboratorTeamID)
+                    .ToListAsync();
+
+                if (!teamIds.Any())
+                {
+                    return new List<TfaTask>();  // Retorna lista vacía si no hay equipos
+                }
+
+                // Obtener IDs de colaboradores asociados a los equipos filtrados
+                var categoriesIds = await _context.TfaTeamsCategories
+                    .Where(tc => teamIds.Contains(tc.TeamId))
+                    .Select(tc => tc.CategoriesId)
+                    .Distinct()
+                    .ToListAsync();
+
+                if (!categoriesIds.Any())
+                {
+                    return new List<TfaTask>();  // Retorna lista vacía si no hay colaboradores
+                }
+
+                // Obtener lista de usuarios usando los IDs de colaboradores
+                var tasks = await _context.TfaTasks
+                    .Where(u => categoriesIds.Contains(u.CategoryId.Value))
+                    .ToListAsync();
+
+                if (!tasks.Any())
+                {
+                    return new List<TfaTask>();  // Retorna lista vacía si no hay colaboradores
+                }
+
+                return new List<TfaTask>(tasks);
+
+            }
+            catch (Exception ex)
+            {
+                // Log del error (puedes usar una librería como Serilog o simplemente registrar en consola/log)
+                Console.WriteLine($"Error obteniendo usuarios por categoría: {ex.Message}");
+                throw new ApplicationException("Error al obtener los usuarios por categoría", ex);
+            }
+        }
+
+
     }
 }

@@ -54,14 +54,14 @@
   },
   {
     "ContainingType": "TaskUserManager.Controllers.TaskUsers",
-    "Method": "GetUserByCategories",
-    "RelativePath": "api/TaskUsers/GetUserByCategories",
+    "Method": "GetTaskByCategories",
+    "RelativePath": "api/TaskUsers/GetTaskByCategories",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idCategory",
+        "Name": "userId",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -70,8 +70,8 @@
   },
   {
     "ContainingType": "TaskUserManager.Controllers.TaskUsers",
-    "Method": "GetUsersByTaskCategory",
-    "RelativePath": "api/TaskUsers/GetUsersByTaskCategory",
+    "Method": "GetUserByCategories",
+    "RelativePath": "api/TaskUsers/GetUserByCategories",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

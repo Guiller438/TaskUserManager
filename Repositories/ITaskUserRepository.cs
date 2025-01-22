@@ -22,9 +22,10 @@ namespace TaskUserManager.Repositories
         Task SubirImagenTarea(UpdateEvidence updateEvidence);
 
         Task<TfaTask> GetTaskAsync(int id);
+
         Task DeleteTaskAsync(int taskId);
 
         Task<List<TfaUser>> GetUserByCategories(int id);
-
+        Task<List<TfaTask>> GetTaskByCategories(int id);
     }
 }

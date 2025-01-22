@@ -117,6 +117,19 @@ namespace TaskUserManager.Controllers
 
         }
 
+        [HttpGet("GetTaskByCategories")]
+
+        public async Task<IActionResult> GetTaskByCategories(int userId)
+        {
+            var tasks = await _service.GetTaskByCategories(userId);
+
+            if (tasks == null || tasks.Count == 0)
+            {
+                return NotFound(new { message = "No se encontraron tareas para el usuario proporcionado" });
+            }
+            return Ok(tasks);
+        }
+
 
     }
 }
