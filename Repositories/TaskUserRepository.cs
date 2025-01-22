@@ -204,26 +204,14 @@ namespace TaskUserManager.Repositories
             try
             {
                 // Verificar si existen equipos para la categoría antes de obtener los IDs
-                var teamIds = await _context.TfaTeamsColaborators
-                    .Where(ctc => ctc.ColaboratorUsersID == userid)
-                    .Select(ctc => ctc.ColaboratorTeamID)
-                    .ToListAsync();
-
-                if (!teamIds.Any())
-                {
-                    return new List<TfaTask>();  // Retorna lista vacía si no hay equipos
-                }
-
-                // Obtener IDs de colaboradores asociados a los equipos filtrados
                 var categoriesIds = await _context.TfaTeamsCategories
-                    .Where(tc => teamIds.Contains(tc.TeamId))
-                    .Select(tc => tc.CategoriesId)
-                    .Distinct()
+                    .Where(ctc => ctc.CategoriesId == userid)
+                    .Select(ctc => ctc.CategoriesId)
                     .ToListAsync();
 
                 if (!categoriesIds.Any())
                 {
-                    return new List<TfaTask>();  // Retorna lista vacía si no hay colaboradores
+                    return new List<TfaTask>();  // Retorna lista vacía si no hay equipos
                 }
 
                 // Obtener lista de usuarios usando los IDs de colaboradores

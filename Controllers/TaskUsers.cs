@@ -20,7 +20,7 @@ namespace TaskUserManager.Controllers
 
         [HttpGet("tasks/{userId}")]
         public async Task<IActionResult> GetTasksByUserId(int userId)
-        {
+         {
             var tasks = await _service.GetTasksByUserIdAsync(userId);
             var taskDtos = tasks.Select(task => new TaskUserDto
             {

@@ -28,6 +28,8 @@ builder.Services.AddHttpClient<FileUploadService>(client =>
 });
 
 
+
+
 builder.Services.AddDbContext<DbAb0bdeTalentseedsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
