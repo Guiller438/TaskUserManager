@@ -20,7 +20,7 @@ namespace TaskUserManager.Controllers
 
         [HttpGet("tasks/{userId}")]
         public async Task<IActionResult> GetTasksByUserId(int userId)
-         {
+        {
             var tasks = await _service.GetTasksByUserIdAsync(userId);
             var taskDtos = tasks.Select(task => new TaskUserDto
             {
@@ -130,6 +130,16 @@ namespace TaskUserManager.Controllers
             return Ok(tasks);
         }
 
+        [HttpGet("gettaskbyuser")]
 
+        public async Task<IActionResult> gettaskbyuser(int userId)
+        {
+            var tasks = await _service.gettaskbyuser(userId);
+            if (tasks == null || tasks.Count == 0)
+            {
+                return NotFound(new { message = "No se encontraron tareas para el usuario proporcionado" });
+            }
+            return Ok(tasks);
+        }
     }
 }

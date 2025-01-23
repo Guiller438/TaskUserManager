@@ -90,26 +90,6 @@ namespace TaskUserManager.Service
             await _repository.DeleteTaskAsync(taskId);
         }
 
-        public async Task<List<TfaUser>> GetUserByCategories(int categoryId)
-        {
-            try
-            {
-
-                // Llamada al repositorio para obtener los usuarios
-                var users = await _repository.GetUserByCategories(categoryId);
-
-                if (users == null || !users.Any())
-                {
-                    return new List<TfaUser>();
-                }
-
-                return users;
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Error en el servicio de usuarios", ex);
-            }
-        }
         public async Task<List<TfaTask>> GetTaskByCategories(int userId)
         {
             try
@@ -120,6 +100,43 @@ namespace TaskUserManager.Service
                 if (tasks == null || !tasks.Any())
                 {
                     return new List<TfaTask>();
+                }
+                return tasks;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en el servicio de tareas", ex);
+            }
+        }
+
+        public async Task<List<TfaTask>> gettaskbyuser(int categoryId)
+        {
+            try
+            {
+                // Llamada al repositorio para obtener las tareas
+                var tasks = await _repository.gettaskbyuser(categoryId);
+
+                if (tasks == null || !tasks.Any())
+                {
+                    return new List<TfaTask>();
+                }
+                return tasks;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en el servicio de tareas", ex);
+            }
+        }
+
+        public async Task<List<TfaUser>> GetUserByCategories(int userId)
+        {
+            try
+            {
+                // Llamada al repositorio para obtener las tareas
+                var tasks = await _repository.GetUserByCategories(userId);
+                if (tasks == null || !tasks.Any())
+                {
+                    return new List<TfaUser>();
                 }
                 return tasks;
             }

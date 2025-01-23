@@ -158,13 +158,13 @@ namespace TaskUserManager.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<TfaUser>> GetUserByCategories(int id)
+        public async Task<List<TfaUser>> GetUserByCategories(int categoryId)
         {
             try
             {
                 // Verificar si existen equipos para la categoría antes de obtener los IDs
                 var teamIds = await _context.TfaTeamsCategories
-                    .Where(ctc => ctc.CategoriesId == id)
+                    .Where(ctc => ctc.CategoriesId == categoryId)
                     .Select(ctc => ctc.TeamId)
                     .ToListAsync();
 
@@ -198,14 +198,13 @@ namespace TaskUserManager.Repositories
             }
         }
 
-
-        public async Task<List<TfaTask>> GetTaskByCategories(int userid)
+        public async Task<List<TfaTask>> gettaskbyuser(int categoryId)
         {
             try
             {
                 // Verificar si existen equipos para la categoría antes de obtener los IDs
                 var categoriesIds = await _context.TfaTeamsCategories
-                    .Where(ctc => ctc.CategoriesId == userid)
+                    .Where(ctc => ctc.CategoriesId == categoryId)
                     .Select(ctc => ctc.CategoriesId)
                     .ToListAsync();
 
@@ -226,6 +225,48 @@ namespace TaskUserManager.Repositories
 
                 return new List<TfaTask>(tasks);
 
+            }
+            catch (Exception ex)
+            {
+                // Log del error (puedes usar una librería como Serilog o simplemente registrar en consola/log)
+                Console.WriteLine($"Error obteniendo tareas por categoría: {ex.Message}");
+                throw new ApplicationException("Error al obtener las tareas por categoría", ex);
+            }
+        }
+
+
+        public async Task<List<TfaTask>> GetTaskByCategories(int userid)
+        {
+            try
+            {
+                // Verificar si existen equipos para la categoría antes de obtener los IDs
+                var teamIds = await _context.TfaTeamsColaborators
+                    .Where(ctc => ctc.ColaboratorUsersID == userid)
+                    .Select(ctc => ctc.ColaboratorTeamID)
+                    .ToListAsync();
+                if (!teamIds.Any())
+                {
+                    return new List<TfaTask>();  // Retorna lista vacía si no hay equipos
+                }
+                // Obtener IDs de colaboradores asociados a los equipos filtrados
+                var categoriesIds = await _context.TfaTeamsCategories
+                    .Where(tc => teamIds.Contains(tc.TeamId))
+                    .Select(tc => tc.CategoriesId)
+                    .Distinct()
+                    .ToListAsync();
+                if (!categoriesIds.Any())
+                {
+                    return new List<TfaTask>();  // Retorna lista vacía si no hay colaboradores
+                }
+                // Obtener lista de usuarios usando los IDs de colaboradores
+                var tasks = await _context.TfaTasks
+                    .Where(u => categoriesIds.Contains(u.CategoryId.Value))
+                    .ToListAsync();
+                if (!tasks.Any())
+                {
+                    return new List<TfaTask>();  // Retorna lista vacía si no hay colaboradores
+                }
+                return new List<TfaTask>(tasks);
             }
             catch (Exception ex)
             {

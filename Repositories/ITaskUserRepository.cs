@@ -25,7 +25,8 @@ namespace TaskUserManager.Repositories
 
         Task DeleteTaskAsync(int taskId);
 
-        Task<List<TfaUser>> GetUserByCategories(int id);
+        Task<List<TfaTask>> gettaskbyuser(int id);
         Task<List<TfaTask>> GetTaskByCategories(int id);
+        Task<List<TfaUser>> GetUserByCategories(int id);
     }
 }

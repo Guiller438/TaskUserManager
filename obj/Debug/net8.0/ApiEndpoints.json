@@ -70,6 +70,22 @@
   },
   {
     "ContainingType": "TaskUserManager.Controllers.TaskUsers",
+    "Method": "gettaskbyuser",
+    "RelativePath": "api/TaskUsers/gettaskbyuser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskUserManager.Controllers.TaskUsers",
     "Method": "GetUserByCategories",
     "RelativePath": "api/TaskUsers/GetUserByCategories",
     "HttpMethod": "GET",
